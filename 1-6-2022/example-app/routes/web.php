@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\HomeControler;
+use App\Http\Controllers\studentControler;
+use App\Models\student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 Route::get('/posts/{id}/{name}', function ($id , $name) {
@@ -26,3 +27,23 @@ Route::get('/posts/{id}/{name}', function ($id , $name) {
 // Route::get('/posts/search', function (Request $request) {
 //     return  ;
 // });
+
+
+// Route::get('/' , [studentControler::class , 'display']);
+
+
+// Route::get('/login',function(){
+//     return view('login');
+// });
+
+// Route::get('/',function(){
+//     return view('home');
+// });
+
+
+// route::get('/master' , function(){
+//     return view('layout.master');
+// });
+
+
+Route::get('/' , [HomeControler::class , 'getdata']);
