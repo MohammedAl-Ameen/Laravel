@@ -2,15 +2,37 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\student;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Session;
+
 
 class studentControler extends Controller
 {
 
     function display(){
-    return view('students' , [
-            "list" => student::all()
-        ]);
+        return view('student' , [
+                "list" => student::latest()->filter(request(['id' , 'search']))->SimplePaginate(4)
+            ]);
     }
+
+    public function create(){
+        return view('create');
+    }
+
+
+    public function store(Request $request){
+    $form = $request->validate([
+        'name' => 'required',
+        'email' => ['required' , rule::unique('students' , 'email') , 'email']
+    ]);
+
+    Session::flash('message' , 'Account created successfully!');
+    
+    student::create($form)->with('message' , 'Account created successfully!');
+    
+    return redirect('/');
+}
 }

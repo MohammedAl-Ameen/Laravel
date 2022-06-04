@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class student extends Model
 {
     use HasFactory;
+
+
+    protected $fillable = ['name' , 'email'];
+
+    public function scopeFilter($query , array $filters){
+        if($filters['id'] ?? false){
+            return $query->where('id' , 'like' , '%' . request('id'). '%');
+        }
+
+
+            if($filters['search'] ?? false){
+                return $query->where('id' , 'like' , '%' . request('search'). '%')
+                ->orWhere('name' , 'like' , '%' . request('search'). '%')
+                ;
+            }
+
+    }
 }

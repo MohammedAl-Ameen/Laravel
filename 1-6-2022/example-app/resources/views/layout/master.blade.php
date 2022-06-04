@@ -1,12 +1,6 @@
 @include('partials._navbar')
 
-
-    
-
-
-                @yield('content')
-
-
+@yield('content')
 
 @include('partials._footer')
 

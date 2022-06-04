@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,4 +53,10 @@
     </div>
   </nav>
   
+
+  @if(session()->has('message'))
+
+  <div>{{session('message')}}</div>
+  
+  @endif
 

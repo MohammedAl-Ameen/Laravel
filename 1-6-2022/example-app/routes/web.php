@@ -3,7 +3,8 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeControler;
 use App\Http\Controllers\studentControler;
-use App\Models\student;
+use App\Http\Controllers\LoginControler;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,8 +43,12 @@ Route::get('/posts/{id}/{name}', function ($id , $name) {
 
 
 // route::get('/master' , function(){
-//     return view('layout.master');
+//     return view('login');
 // });
 
-
+Route::get('/login' , [LoginControler::class , 'getdata']);
+// Route::post('/student' , [StudentControler::class , 'display']);
 Route::get('/' , [HomeControler::class , 'getdata']);
+Route::get('/student' , [StudentControler::class , 'display']);
+Route::get('/student/create' , [StudentControler::class , 'create']);
+Route::post('/student' , [StudentControler::class , 'store']);

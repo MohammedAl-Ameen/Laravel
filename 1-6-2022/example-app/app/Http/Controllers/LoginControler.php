@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeControler extends Controller
+class LoginControler extends Controller
 {
     function getdata(){
 
-        return view("home" , ["data" => [["title" => "Title1",
+        return view("login" , ["data" => [["title" => "Title1",
         "description" => "This is a description",
         "btn" => "click1"
         ] , 
