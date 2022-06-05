@@ -32,7 +32,40 @@ class studentControler extends Controller
     Session::flash('message' , 'Account created successfully!');
     
     student::create($form)->with('message' , 'Account created successfully!');
+
+
+    // student::destroy($form);
     
     return redirect('/');
 }
+
+public function delete(student $student){
+    $student->delete();
+    return redirect('/student');
 }
+
+
+public function show(student $student){
+    return view('edit', ['student' => $student]);
+}
+
+
+public function update(Request $request , student $student){
+    $form = $request->validate([
+        'name' => 'required',
+        'email' => 'required'
+    ]);
+
+    dd($student);
+    $student->create($form);
+
+
+    // student::destroy($form);
+    
+    return redirect('/student');
+}
+
+}
+
+
+

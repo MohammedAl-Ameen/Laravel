@@ -12,10 +12,14 @@
         <input type="submit">
     </form>
     @foreach ($list as $value)
-        <pre>
-        <a href="/student?id={{$value["id"]}}">{{$value["id"]}}</a>
-        {{$value}}
-        </pre>
+    <a href="/student?id={{$value["id"]}}">{{$value["id"]}}</a>
+        <pre>{{$value}}</pre>
+    <form action="/student/{{$value["id"]}}" method="POST" style="display:flex;">
+        @csrf
+        @method('DELETE')
+        <input type="submit" value="delete">
+        <button><a href="/student/{{ $value["id"] }}/edit" style="text-decoration: none; color:black; cursor: default;">edit</a></button>
+    </form>
     @endforeach
 
     <div class="mt-6 p-4">

@@ -47,8 +47,19 @@ Route::get('/posts/{id}/{name}', function ($id , $name) {
 // });
 
 Route::get('/login' , [LoginControler::class , 'getdata']);
+
 // Route::post('/student' , [StudentControler::class , 'display']);
+
 Route::get('/' , [HomeControler::class , 'getdata']);
+
 Route::get('/student' , [StudentControler::class , 'display']);
+
 Route::get('/student/create' , [StudentControler::class , 'create']);
+
+Route::delete('/student/{student}' , [StudentControler::class , 'delete']);
+
+Route::get('/student/{student}/edit' , [StudentControler::class , 'show']);
+
+Route::put('/student/{student}' , [StudentControler::class , 'update']);
+
 Route::post('/student' , [StudentControler::class , 'store']);
