@@ -21,7 +21,7 @@
         </tr>
     @endforeach --}}
 
-    {{ dd($students[0]->get_course[0]["name"]); }}
+    {{-- {{ dd($students[0]->get_course[0]["name"]); }} --}}
 
     {{-- @foreach ($students as $item)
     <tr>
@@ -31,6 +31,12 @@
 
     </tr>
 @endforeach --}}
+
+
+@foreach ($studnet_course as $item)
+    {{ dd($item["name"]); }}
+@endforeach
+
 
 
 </table>

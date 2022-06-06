@@ -65,9 +65,10 @@ class StudentController extends Controller
         //     $doctorName = doctor::find($value["doctor_id"]);
         //     $value["doctor_name"] = $doctorName["name"];
         // }
-        $students = student::all();
+        $students = student::find(1);
         // dd($students[0]->get_course);
-        return view('student.edit' , compact('courses' , 'students'));
+        $studnet_course = $students->get_course;
+        return view('student.edit' , compact('courses' , 'students' , 'studnet_course'));
     }
 
     /**
