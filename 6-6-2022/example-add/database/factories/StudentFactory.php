@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\student>
  */
-class studentFactory extends Factory
+class StudentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,7 @@ class studentFactory extends Factory
     public function definition()
     {
         return [
-            'name' =>  $this->faker->name,
-            'place' => $this->faker->city,
-            'time' => $this->faker->time
+            //
         ];
     }
 }
