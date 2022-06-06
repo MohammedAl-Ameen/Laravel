@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments("id")->unsigned();
+            $table->string("name");
             $table->integer("doctor_id")->unsigned();
             $table->timestamps();
             $table->foreign('doctor_id')

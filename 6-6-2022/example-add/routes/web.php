@@ -19,5 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/student', [StudentController::class , 'index'])->name('student');;
+Route::get('/student', [StudentController::class , 'index']);
 Route::get('/student/show', [StudentController::class , 'show']);
+Route::get('/student/edit', [StudentController::class , 'edit']);

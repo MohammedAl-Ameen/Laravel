@@ -14,4 +14,11 @@ class student extends Model
     public function get_course(){
         return $this->belongsToMany(course::class);
     }
+
+
+    public function get_student($id){
+
+        return (student::where('id' , 'like' , '%' . $id. '%'));
+
+    }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\course;
 use App\Models\student;
 use App\Http\Requests\StorestudentRequest;
 use App\Http\Requests\UpdatestudentRequest;
+use App\Models\doctor;
 
 class StudentController extends Controller
 {
@@ -13,14 +15,9 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-
-    public function show()
-    {
-    }
-
     public function index()
     {
+        
     }
 
     /**
@@ -41,7 +38,7 @@ class StudentController extends Controller
      */
     public function store(StorestudentRequest $request)
     {
-        //
+        
     }
 
     /**
@@ -50,7 +47,10 @@ class StudentController extends Controller
      * @param  \App\Models\student  $student
      * @return \Illuminate\Http\Response
      */
+    public function show(student $student)
+    {
 
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -60,7 +60,14 @@ class StudentController extends Controller
      */
     public function edit(student $student)
     {
-        //
+        $courses = course::all();
+        // foreach($courses as $value){
+        //     $doctorName = doctor::find($value["doctor_id"]);
+        //     $value["doctor_name"] = $doctorName["name"];
+        // }
+        $students = student::all();
+        // dd($students[0]->get_course);
+        return view('student.edit' , compact('courses' , 'students'));
     }
 
     /**
@@ -72,7 +79,9 @@ class StudentController extends Controller
      */
     public function update(UpdatestudentRequest $request, student $student)
     {
-        //
+        $student = student::find(1);
+        $course = course::find([1,3]);
+        $student->get_course()->attach($course);
     }
 
     /**
