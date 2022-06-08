@@ -8,7 +8,7 @@
 </head>
 <body>
     <table>
-        <th>{{ trans{tilte} }}</th>
+        <th>{{ __('title') }}</th>
     </table>
 </body>
 </html>
