@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/' , [MovieController::class , 'home']);
+
+
+Route::get('/admin' , [MovieController::class , 'index']);
+Route::get('/admin/create' , [MovieController::class , 'create']);
+Route::delete('/admin/delete/{movie}' , [MovieController::class , 'destroy']);
+Route::get('/admin/edit/{movie}' , [MovieController::class , 'edit']);
+route::PUT('/admin/update/{movie}' , [MovieController::class , 'update']);
+route::post('/admin/create' , [MovieController::class , 'store']);

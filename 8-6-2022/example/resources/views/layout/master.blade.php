@@ -2,6 +2,6 @@
 
     @yield("hero")
 
-    @yield("movies")
+    @yield("body")
 
 @include("layout.footer")

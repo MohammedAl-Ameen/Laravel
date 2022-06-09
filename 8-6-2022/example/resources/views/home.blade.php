@@ -74,22 +74,22 @@
 @endsection
 
 
-@section("movies")
+@section("body")
             <div class="black-background">
 
-
-                <!--hollywood new release -->
                 <section id="mylist" class="container">
 
                     <h4 class="mylist-heading">
                         Our Movies
                     </h4>
+                    @foreach ($movies as $movie )
                     <div class="mylist-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         <div class="video">
                             <video class="mylist-img p-r-10 p-t-10 video-item"
-                                poster="../images/tv-show/poster/never-have-ever-short poster.jpg">
+                                poster="../{{'images/' .$movie->url_image}}" style="width: 300px; height: 200px">
                                 <source
-                                    src="../images/tv-show/videos/Never Have I Ever - Official Trailer - Netflix_2.mp4"
+                                    src="videos/{{ $movie->url_video}}"
+                                    style='width: 300px; height: 200px;'
                                     type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
@@ -102,21 +102,20 @@
                                 </div>
                                 <div>
                                     <h4 class="heading f-w-8 text-shadow">
-                                        Never Have I Ever
+                                        {{ $movie->name }}
                                     </h4>
                                 </div>
                                 <div class="info d-flex flex-middle flex-no-wrap">
-                                    <p class="rated text-shadow"><strong>18+</strong></p>
-                                    <p class="season-count text-shadow"> 1 Season</p>
+                                    <p class="season-count text-shadow">{{ $movie->number }} Movies</p>
                                 </div>
                                 <div class="genere d-flex flex-no-wrap text-shadow">
-                                    <p>#Nudeity</p>
-                                    <p>#Romance</p>
-                                    <p>#Love</p>
+                                    <p>{{ $movie->category }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
+                   
 
                 </section>
             </div>

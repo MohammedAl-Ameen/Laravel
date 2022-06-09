@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\movie;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoremovieRequest;
 use App\Http\Requests\UpdatemovieRequest;
 
@@ -13,10 +14,21 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function home()
+    {
+        $movies = movie::all();
+        return view('home', compact("movies"));
+    }
+    
+    
     public function index()
     {
-        //
+        $movies = movie::all();
+        return view('admin', compact("movies"));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +37,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -34,9 +46,38 @@ class MovieController extends Controller
      * @param  \App\Http\Requests\StoremovieRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoremovieRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => 'required',
+            'number'=> 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'image' => 'required|max:5048',
+            "video" => 'required'
+
+        ]);
+
+
+
+
+        $imageName = time() . '-' .$request->name . '.' .$request->image->extension();
+        $request->image->move(public_path('images') , $imageName);
+
+        $videoName = time() . '-video' .$request->name . '.' .$request->video->extension();
+        $request->video->move(public_path('videos') , $videoName);
+
+        movie::create([
+            "name" => $request->input('name'),
+            'number'=> $request->input('number'),
+            'category' => $request->input('category'),
+            'description' => $request->input('description'),
+            'url_image' => $imageName,
+            'url_video' => $videoName
+        ]);
+
+        return redirect("/admin");
+
     }
 
     /**
@@ -47,7 +88,6 @@ class MovieController extends Controller
      */
     public function show(movie $movie)
     {
-        //
     }
 
     /**
@@ -58,7 +98,7 @@ class MovieController extends Controller
      */
     public function edit(movie $movie)
     {
-        //
+        return view('edit', ['movie' => $movie]);
     }
 
     /**
@@ -70,7 +110,16 @@ class MovieController extends Controller
      */
     public function update(UpdatemovieRequest $request, movie $movie)
     {
-        //
+        $form = $request->validate([
+            "name" => "required",
+            "email" => "required",
+            "phone" => "required",
+            "age" => "required"
+        ]);
+
+        $movie->update($form);
+
+        return redirect("/admin");
     }
 
     /**
@@ -81,6 +130,7 @@ class MovieController extends Controller
      */
     public function destroy(movie $movie)
     {
-        //
+        $movie->delete();
+        return redirect('/admin');
     }
 }
