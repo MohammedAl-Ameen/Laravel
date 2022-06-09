@@ -7,7 +7,7 @@
 <form style="width: 50%;" method="POST" action="/admin/update/{{ $movie->id }}" enctype="multipart/form-data">
 
     @csrf
-    @method('put')
+    @method('PUT')
   <div class="form-outline mb-4">
     <input type="text" id="form4Example1" class="form-control " name="name" value="{{ $movie->name }}"/>
     <label class="form-label" for="form4Example1" ></label>

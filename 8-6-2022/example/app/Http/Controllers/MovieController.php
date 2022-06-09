@@ -110,14 +110,14 @@ class MovieController extends Controller
      */
     public function update(UpdatemovieRequest $request, movie $movie)
     {
-        $form = $request->validate([
+        $movies = $request->validate([
             "name" => "required",
-            "email" => "required",
-            "phone" => "required",
-            "age" => "required"
+            "number" => "required",
+            "category" => "required",
+            "description" => "required"
         ]);
 
-        $movie->update($form);
+        $movie->update($movies);
 
         return redirect("/admin");
     }

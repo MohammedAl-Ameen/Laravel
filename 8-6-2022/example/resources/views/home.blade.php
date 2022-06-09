@@ -8,9 +8,9 @@
                 <section id="browse-dashboard" class=" d-flex direction-column flex-start middle-align">
                     <div>
                         <!--trailer video-->
-                        <video class="hero-background-image" id="hero-video"
-                            poster="../images/movies/murder mystery.jpg">
-                            <source src="../images/movies/videos/Murder Mystery - Trailer - Netflix.mp4"
+                        <video class="hero-background-image" id="hero-video " style="height: 65%;"
+                            poster="../images/The Shawshank Redemption.jpg">
+                            <source src="../videos/The Shawshank Redemption.mp4"
                                 type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -21,7 +21,7 @@
 
                     <div class="container text-container" style="z-index: 5;">
                         <div class="contentlogo">
-                            <img src="../images/movies/murder mystery logo.webp" alt="content logo"
+                            <img src="../images/The_Shawshank_Redemption_movie_logo.png" alt="content logo"
                                 class="show-logo" />
                         </div>
                         <!--top 10 ranking badge svg-->
@@ -45,12 +45,12 @@
                                     points="8.4639503 12.8342327 6.65837455 13.2666206 6.65837455 7.77862061 4.65323515 7.77862061 4.65323515 6.22012364 10.4690897 6.22012364 10.4690897 7.77862061 8.4639503 7.77862061">
                                 </polygon>
                             </svg>
-                            <span class="p-l-10">#16 in India Today</span>
+                            <span class="p-l-10">#16 in Jordan Today</span>
                         </div>
 
                         <div class="synopsis m-t-20" style="max-width: 500px;">
                             <p>
-                                An overdue honeymoon. A shocking crime. A roomful of suspects. If Nick and Audrey can stay alive, this could be their best vacation ever.
+                                Andy Dufresne, a successful banker, is arrested for the murders of his wife and her lover, and is sentenced to life imprisonment at the Shawshank prison. He becomes the most unconventional prisoner.
                             </p>
                         </div>
                         <div class="buttons-container m-t-20">
@@ -82,9 +82,10 @@
                     <h4 class="mylist-heading">
                         Our Movies
                     </h4>
-                    @foreach ($movies as $movie )
                     <div class="mylist-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        <div class="video">
+
+                    @foreach ($movies as $movie )
+                    <div class="video">
                             <video class="mylist-img p-r-10 p-t-10 video-item"
                                 poster="../{{'images/' .$movie->url_image}}" style="width: 300px; height: 200px">
                                 <source
@@ -113,9 +114,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                     @endforeach
-                   
+                </div>
 
                 </section>
             </div>
