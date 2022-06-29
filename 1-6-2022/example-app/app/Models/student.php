@@ -18,11 +18,11 @@ class student extends Model
         }
 
 
-            if($filters['search'] ?? false){
-                return $query->where('id' , 'like' , '%' . request('search'). '%')
-                ->orWhere('name' , 'like' , '%' . request('search'). '%')
-                ;
-            }
+        if($filters['search'] ?? false){
+        
+        return $query->where('id' , 'like' , '%' . request('search'). '%')
+            ->orWhere('name' , 'like' , '%' . request('search'). '%');
+        }
 
     }
 }
