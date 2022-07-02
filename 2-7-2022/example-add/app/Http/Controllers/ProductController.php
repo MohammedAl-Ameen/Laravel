@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return product::all();
     }
 
     /**
@@ -36,7 +36,13 @@ class ProductController extends Controller
      */
     public function store(StoreproductRequest $request)
     {
-        //
+        $request->validate([
+            "name" => "required"
+        ]);
+
+        return product::create($request->all());
+
+        
     }
 
     /**
@@ -45,9 +51,9 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show($id)
     {
-        //
+        return product::find($id);
     }
 
     /**
@@ -68,10 +74,12 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateproductRequest $request, product $product)
+    public function update(UpdateproductRequest $request, $id)
     {
-        //
-    }
+        $product = product::find($id);
+        $product->update($request->all());
+        return $product;
+        }
 
     /**
      * Remove the specified resource from storage.
